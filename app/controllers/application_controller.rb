@@ -19,10 +19,12 @@ class ApplicationController < Sinatra::Base
   post "/signup" do
     @user = User.find_by(username: params[:username], password: params[:password])
 
-    if @user
-      erb :login
-    else
+    if params[:username].empty?
       erb :signup
+    elsif params[:password].empty?
+      erb :signup
+    else
+      erb :login
     end
 
   end
