@@ -20,11 +20,11 @@ class ApplicationController < Sinatra::Base
     @user = User.find_by(username: params[:username], password: params[:password])
 
     if params[:username].empty?
-      erb :signup
+      redirect '/signup'
     elsif params[:password].empty?
-      erb :signup
+      redirect '/signup'
     else
-      erb :login
+      redirect 'login'
     end
 
   end
